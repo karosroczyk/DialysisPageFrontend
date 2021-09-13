@@ -143,19 +143,21 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         this.daysHistory.push(this.datepipe.transform(res.userFormFromDB[0][i].datetime, 'M/d/YYYY HH:mm'));
       }
 
-      this.lastWeight = this.weightHistory[length];
-      this.lastBodyTemperature = this.bodyTemperatureHistory[length];
-      this.lastMeasuredDate = this.datepipe.transform(res.userFormFromDB[0][length].datetime, 'M/d/YYYY');
-      this.lastMeasuredHour = this.datepipe.transform(res.userFormFromDB[0][length].datetime, 'HH:mm');
-      this.lastSbpValue = Math.round(((res.userFormFromDB[0][length].result_sbp) * 10) / 25);
-      this.lastSbpLabel = Math.round(res.userFormFromDB[0][length].result_sbp) + " mmHg";
-      this.lastDbpValue = Math.round(((res.userFormFromDB[0][length].result_dbp) * 10) / 15);
-      this.lastDbpLabel = Math.round(res.userFormFromDB[0][length].result_dbp) + " mmHg";
+      if (length >= 0) {
+        this.lastWeight = this.weightHistory[length];
+        this.lastBodyTemperature = this.bodyTemperatureHistory[length];
+        this.lastMeasuredDate = this.datepipe.transform(res.userFormFromDB[0][length].datetime, 'M/d/YYYY');
+        this.lastMeasuredHour = this.datepipe.transform(res.userFormFromDB[0][length].datetime, 'HH:mm');
+        this.lastSbpValue = Math.round(((res.userFormFromDB[0][length].result_sbp) * 10) / 25);
+        this.lastSbpLabel = Math.round(res.userFormFromDB[0][length].result_sbp) + " mmHg";
+        this.lastDbpValue = Math.round(((res.userFormFromDB[0][length].result_dbp) * 10) / 15);
+        this.lastDbpLabel = Math.round(res.userFormFromDB[0][length].result_dbp) + " mmHg";
 
-      this.weightAverage = this.calculateAverage(this.weightHistory, "masa");
-      this.bodyTemperatureAverage = this.calculateAverage(this.bodyTemperatureHistory, "temperatura");
-      this.sbpAverage = this.calculateAverage(this.sbpHistory);
-      this.dbpAverage = this.calculateAverage(this.dbpHistory);
+        this.weightAverage = this.calculateAverage(this.weightHistory, "masa");
+        this.bodyTemperatureAverage = this.calculateAverage(this.bodyTemperatureHistory, "temperatura");
+        this.sbpAverage = this.calculateAverage(this.sbpHistory);
+        this.dbpAverage = this.calculateAverage(this.dbpHistory);
+      }
     })
   }
 

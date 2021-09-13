@@ -120,10 +120,11 @@ export class UserFormComponent implements OnInit {
     this.userDataFromForm.result_dbp = prediction.result_dbp;
     var lastUserForm = this.userFormsList[this.userFormsList.length - 1]
 
-    if (this.userFormsList.length > 0)
+    if (this.userFormsList.length > 0) {
       this.webReqService.deleteLastPrediction(lastUserForm._id).subscribe((res: HttpResponse<any>) => {
         console.log(res);
       })
+    }
 
     this.webReqService.postUserForm('userForm', this.userDataFromForm).then((res: HttpResponse<any>) => {
       if (res)
@@ -131,17 +132,17 @@ export class UserFormComponent implements OnInit {
     }).then(error => {
       if (isError)
         this.openDialogUserFormData(false);
-      else
+      else {
         this.openDialogUserFormData(true);
-      this.router.navigate(['/lists']);
-    })
-
-    this.webReqService.postUserForm('userForm', prediction).then((res: HttpResponse<any>) => {
-      if (res)
-        isErrorPrediction = false;
-    }).then(error => {
-      if (isErrorPrediction)
-        this.openDialogUserFormData(false);
+        this.webReqService.postUserForm('userForm', prediction).then((res: HttpResponse<any>) => {
+          if (res)
+            isErrorPrediction = false;
+        }).then(error => {
+          if (isErrorPrediction)
+            this.openDialogUserFormData(false);
+          this.router.navigate(['/lists']);
+        })
+      }
       this.router.navigate(['/lists']);
     })
   }
@@ -166,33 +167,7 @@ export class UserFormComponent implements OnInit {
         this.weatherDataFromOpenWeatherMapWebsite.weatherDataFromOpenWeatherMapWebsiteObject.windSpeed)),
       this.normalizeData("atmosphere_pressure", this.hPaToHg(
         this.weatherDataFromOpenWeatherMapWebsite.weatherDataFromOpenWeatherMapWebsiteObject.pressure))
-      //this.normalizeData("temperature_sqrt", (this.userDataFromForm.body_temperature * this.userDataFromForm.body_temperature)),
-      //this.normalizeData("weightstart_sqrt", (this.userDataFromForm.weight_start * this.userDataFromForm.weight_start)),
-      //this.normalizeData("blood_flow_sqrt", (this.userDataFromForm.blood_flow * this.userDataFromForm.blood_flow)),
-      //this.normalizeData("conductivity_sqrt", (this.userDataFromForm.conductivity * this.userDataFromForm.conductivity))
     ]]);
-
-    //const inputData = tf.tensor([[
-    //  -1.151228, - 0.251891, 5.383834, 1.240663, - 1.611374, 2.059690, 0.339439, 1.212646, - 0.838051, - 1.660216, 1.196246, - 0.205641, - 0.661389, 0.216606, 0.889508, 0.335798, 1.700589, 1.384515, - 0.269957]]);
-
-    console.log(this.userDataFromFormNormalized.dia_temp_value + " \n" +
-      this.userDataFromFormNormalized.conductivity + " \n" +
-      this.userDataFromFormNormalized.uf + " \n" +
-      this.userDataFromFormNormalized.blood_flow + " \n" +
-      this.userDataFromFormNormalized.dialysis_time + " \n" +
-      this.userDataFromFormNormalized.weight_start + " \n" +
-      this.userDataFromFormNormalized.body_temperature + " \n" +
-      this.normalizeData("gender", Number(this.userDataFromSignUpForm.gender)) + " \n" +
-      this.normalizeData("birthday", (new Date(this.userDataFromSignUpForm.birthday)).getFullYear()) + " \n" +
-      this.normalizeData("first_dialysis", (new Date(this.userDataFromSignUpForm.firstDialysis)).getFullYear()) + " \n" +
-      this.normalizeData("diabetes", Number(this.userDataFromSignUpForm.diabetes)) + " \n" +
-      this.normalizeData("atmosphere_temperature", this.CelsiusToFahrenheit(
-        this.weatherDataFromOpenWeatherMapWebsite.weatherDataFromOpenWeatherMapWebsiteObject.temperature)) + " \n" +
-      this.normalizeData("humidity", this.weatherDataFromOpenWeatherMapWebsite.weatherDataFromOpenWeatherMapWebsiteObject.humidity) + " \n" +
-      this.normalizeData("wind_speed", this.MpsToMph(
-        this.weatherDataFromOpenWeatherMapWebsite.weatherDataFromOpenWeatherMapWebsiteObject.windSpeed)) + " \n" +
-      this.normalizeData("atmosphere_pressure", this.hPaToHg(
-        this.weatherDataFromOpenWeatherMapWebsite.weatherDataFromOpenWeatherMapWebsiteObject.pressure)));
 
     const prediction = this.bloodPressurePredictionNetwork.predict(inputData).dataSync();
 
