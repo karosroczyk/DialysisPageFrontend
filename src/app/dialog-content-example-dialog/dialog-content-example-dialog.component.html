@@ -1,0 +1,120 @@
+<h2 mat-dialog-title style="text-align: center">Powiadomienia</h2>
+<mat-dialog-content *ngIf="name==='nav'" class="mat-typography">
+  <h3 class="center">
+    Nie dokonałeś dzisiaj wpisu odnośnie swojego stanu zdrowia.
+    <br>
+    Wypełnij formularz w zakładce <strong>Dodaj wpis</strong>.
+  </h3>
+</mat-dialog-content>
+<mat-dialog-content *ngIf="name==='nav-lekarz'" class="mat-typography">
+  <h3 class="center">
+    Masz wiadomość od pacjenta świadczącą o zbyt wysokiej lub zbyt niskiej wartości ciśnienia.
+    <br>
+    Przejdź do zakładki <strong>Kontakt do pacjenta</strong> i odpowiedz na wiadomość.
+  </h3>
+</mat-dialog-content>
+<mat-dialog-content *ngIf="name==='setting-page-1'" class="mat-typography">
+  <h3 class="center">
+    Dane użytkownika zostały pomyslnie zaktualizowane.
+  </h3>
+</mat-dialog-content>
+<mat-dialog-content *ngIf="name==='setting-page-0'" class="mat-typography">
+  <h3 class="center">
+    Dane użytkownika nie zostały zaktualizowane.
+  </h3>
+</mat-dialog-content>
+<mat-dialog-content *ngIf="name==='user-form'" class="mat-typography">
+  <h3 class="center">
+    Wpis został pomyślnie dodany.
+  </h3>
+</mat-dialog-content>
+<mat-dialog-content *ngIf="name==='login-page'" class="mat-typography">
+  <h3 class="center">
+    Błąd logowania !
+    <br>
+    Sprawdź poprawność loginu i hasła.
+  </h3>
+</mat-dialog-content>
+<mat-dialog-content *ngIf="name==='signup-page'" class="mat-typography">
+  <h3 class="center">
+    Nieudana próba stworzenia nowego użytkownika!
+    <br>
+    Istnieje już użytkownik o takim loginie.
+    <br>
+    lub
+    <br>
+    Wpisujesz błędy mail.
+    <br>
+    lub
+    <br>
+    Hasło jest krótsze niż wymagane 5 znaków.
+  </h3>
+</mat-dialog-content>
+<mat-dialog-content *ngIf="name==='upload-file'" class="mat-typography">
+  <h3 class="center">
+    Plik został prawidłowo przesłany.
+  </h3>
+</mat-dialog-content>
+<mat-dialog-content *ngIf="name==='notupload-file'" class="mat-typography">
+  <h3 class="center">
+    Błąd w przesyłaniu pliku !
+    <br>
+    Spróbuj ponownie później.
+  </h3>
+</mat-dialog-content>
+<mat-dialog-content *ngIf="name==='undefUser'" class="mat-typography">
+  <h3 class="center">
+    Błąd w pobieraniu pliku !
+    <br>
+    Wybierz odpowiedniego pacjenta.
+  </h3>
+</mat-dialog-content>
+<mat-dialog-content *ngIf="name==='nofile'" class="mat-typography">
+  <h3 class="center">
+    Błąd w pobieraniu pliku !
+    <br>
+    Pacjent nie udostępnił pliku.
+  </h3>
+</mat-dialog-content>
+<mat-dialog-content *ngIf="name==='dashboard-weather'" class="mat-typography">
+  <h3 class="center">
+    Brak dostępnych informacji o podanym mieście !
+    <br>
+    Wpisz inne miasto.
+  </h3>
+</mat-dialog-content>
+<mat-dialog-content *ngIf="name==='wrong-patient-data'" class="mat-typography">
+  <h3 class="center">
+    Brak wszystkich potrzebnych informacji !
+    <br>
+    Uzupełnij wszystkie pola formularza.
+  </h3>
+</mat-dialog-content>
+<mat-dialog-content *ngIf="name==='wrong-userform-data'" class="mat-typography">
+  <h3 class="center">
+    Nieprawidłowe dane wejściowe !
+    <br>
+    Uzupełnij wszystkie pola formularza
+    <br>
+    oraz
+    <br>
+    sprawdź poprawność wpisanych wartości.
+  </h3>
+</mat-dialog-content>
+<mat-dialog-content *ngIf="name==='correct-patient-data'" class="mat-typography">
+  <h3 class="center">
+    Użytkownik został prawidłowo dodany.
+    <br>
+    Możesz się zalogować.
+  </h3>
+</mat-dialog-content>
+<mat-dialog-content *ngIf="name==='correct-userform-data'" class="mat-typography">
+  <h3 class="center">
+    Brawo !
+    <br>
+    Wpis został prawidłowo dodany.
+  </h3>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="true" class="button is-success has-text-white button-box" cdkFocusInitial>Ok</button>
+</mat-dialog-actions>

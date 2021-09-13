@@ -1,0 +1,164 @@
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: green !important;
+  font-family: "Tahoma";
+  font-weight: 500;
+  margin-left: -10px;
+  margin-right: -250px;
+  line-height: 25px;
+  float: left;
+  width: 100%;
+}
+
+::ng-deep .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+  color: green !important;
+}
+
+::ng-deep .mat-form-field-flex > .mat-form-field-infix {
+  padding: 0.4em 0px !important; //tu zmieniamy rozmiar select inputa
+}
+
+.back-box {
+  background: #fafafa;
+  height: 100%
+}
+
+.mat-card-avg {
+  position: relative;
+  margin-top: 5%;
+  height: 50%;
+  width: 100%
+}
+
+.title {
+  font-family: 'Lato';
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.text-above-box {
+  margin-top: 5%;
+  margin-bottom: 0%;
+  border-radius: 5%;
+  height: 10%;
+  font-size: 14px;
+}
+
+.dashboard-card-weather {
+  position: relative;
+  margin-top: 20%;
+  height: 100%;
+}
+
+#divWeatherMain {
+  display: block;
+  border-radius: 5%;
+  width: 200px;
+  height: 320px;
+  margin: 0 auto;
+  padding: 5%;
+  position: relative;
+  background: linear-gradient(180deg, #91c4fc 0%, #d0c3fb 100%);
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border: 3px solid white;
+}
+
+.weatherWidgetRow {
+  display: block;
+  margin: 0 auto;
+  width: fit-content;
+  font-size: 11px;
+}
+
+.sun {
+  margin-top: 10px;
+  color: yellow;
+  filter: drop-shadow( 1px 1px 10px yellow);
+}
+
+.moon {
+  margin-top: 10px;
+  color: white;
+  filter: drop-shadow( 1px 1px 10px white);
+}
+
+.cloudDiv {
+  margin-top: -40px;
+}
+
+.cloud {
+  color: rgb(104, 175, 197);
+  filter: drop-shadow( 1px 1px 5px rgb(104, 175, 197));
+  animation-name: cloudMovement;
+  animation-iteration-count: infinite;
+  animation-duration: 10s;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+}
+
+@keyframes cloudMovement {
+  from {
+    margin-left: -55px;
+  }
+
+  to {
+    margin-left: 65px;
+  }
+}
+
+.not_show_input_box {
+  border-color: transparent;
+  box-shadow: none;
+  width: 100%;
+  height: 10%
+}
+
+.mat-card-double-column {
+  height: 50%;
+}
+
+#meanValues {
+  border-radius: 5px;
+  width: 50%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 5%;
+  position: relative;
+  background: #42586A;
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  float: left;
+  border: 3px solid white;
+  margin-bottom: 2%;
+}
+
+.footer-header {
+  font-family: 'Lato';
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: white;
+}
+
+.footer-text {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: white;
+}
+
+footer {
+  margin-top: 5%;
+}
+
+body {
+  min-width: 600px;
+  width: auto !important;
+  width: 100%;
+}
+
+canvas {
+  width: 500px !important;
+  height: 100% !important;
+}

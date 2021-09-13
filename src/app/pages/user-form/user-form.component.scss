@@ -1,0 +1,66 @@
+.back-box {
+  background: #fafafa;
+  margin-top: 5%;
+  height: 120%;
+}
+
+.front-box {
+  padding: 5%;
+  background: white;
+  border-radius: 5px;
+  width: 750px;
+  height: 100%;
+  max-width: 750px;
+}
+
+.alert-box {
+  float: center;
+  width: 100%;
+  padding: 5%;
+  border-radius: 5px;
+  height: 20%;
+}
+
+.text-above-box {
+  //margin-top: 2%;
+  border-radius: 5px;
+  height: 10%;
+  font-size: 14px;
+}
+
+.text-above-box2 {
+  //margin-top: 2%;
+  border-radius: 5px;
+  height: 10%;
+  font-size: 14px;
+}
+
+.button-box {
+  float: center;
+  width: 100%;
+  padding: 5%;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.footer-header {
+  font-family: 'Lato';
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: white;
+}
+
+.footer-text {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: white;
+}
+
+footer {
+  margin-top: 5%;
+}
+
+.custom-file-input::before {
+  font-size: 14px;
+}

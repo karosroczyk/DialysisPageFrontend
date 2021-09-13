@@ -1,0 +1,267 @@
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="back-box">
+    <mat-grid-list cols="4" rowHeight="400px">
+      <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+        <div *ngIf="card.title==='Card 1'">
+          <mat-card style="margin-top: 10px">
+            <mat-card-header>
+              <mat-card-title>
+                <div>
+                  <button mat-icon-button class="addButton" (click)="onAddButtonClick()">
+                    <mat-icon aria-hidden="false" class="material-icons-outlined">add</mat-icon>
+                  </button>
+                  <h1 class="title has-text-primary">Ostatni pomiar</h1>
+                </div>
+                <div>
+                  <rg-gauge-chart [canvasWidth]="canvasWidth"
+                                  [needleValue]="lastSbpValue"
+                                  [centralLabel]="centralLabel"
+                                  [options]="options_sbp"
+                                  [name]="name_sbp"
+                                  [bottomLabel]="lastSbpLabel" class="gauge"></rg-gauge-chart>
+
+                  <rg-gauge-chart [canvasWidth]="canvasWidth"
+                                  [needleValue]="lastDbpValue"
+                                  [centralLabel]="centralLabel"
+                                  [options]="options_dbp"
+                                  [name]="name_dbp"
+                                  [bottomLabel]="lastDbpLabel" class="gauge"></rg-gauge-chart>
+                </div>
+
+                <div id="divPointers">
+                  <div class="weatherWidgetRow" style="font-size: 14px">
+                    Masa ciała
+                    <div class="weatherWidgetRow" style="font-size: 32px;margin-top: 5px;">
+                      {{lastWeight}} kg
+                    </div>
+                  </div>
+                </div>
+                <div id="divPointers">
+                  <div class="weatherWidgetRow" style="font-size: 14px">
+                    Temperatura ciała
+                    <div class="weatherWidgetRow" style="font-size: 32px;margin-top: 5px;">
+                      {{lastBodyTemperature}} °C
+                    </div>
+                  </div>
+                </div>
+                <div id="divPointers">
+                  <div class="weatherWidgetRow" style="font-size: 14px">
+                    Dzień pomiaru
+                    <div class="weatherWidgetRow" style="    font-size: 20px;margin-top: 5px">
+                      {{lastMeasuredDate}}
+                    </div>
+                    <div class="weatherWidgetRow" style="    font-size: 20px;margin-top: 0px">
+                      {{lastMeasuredHour}}
+                    </div>
+                  </div>
+                </div>
+              </mat-card-title>
+            </mat-card-header>
+          </mat-card>
+        </div>
+        <div *ngIf="card.title==='Card 2' || card.title==='Card 3'">
+          <mat-card class="dashboard-card-weather">
+            <mat-card-header>
+              <mat-card-title>
+                <h1 class="title has-text-primary">Pogoda na jutro</h1>
+                <p></p>
+
+                <div id="divWeatherMain">
+                  <div *ngIf="!card.id" class="weatherWidgetRow" style="font-size: 18px; margin-top: 10px;">
+                    {{card.date}} {{choosenTime}}
+                  </div>
+                  <mat-dialog-content *ngIf="!card.data.weatherDataFromOpenWeatherMapWebsiteObject.pressure">
+                    <h3 class="center">
+                      <br>
+                      <br>
+                      Brak dostępnych informacji o podanym mieście !
+                      <br>
+                      <br>
+                      Wpisz inne miasto.
+                    </h3>
+                  </mat-dialog-content>
+                  <div *ngIf="card.data.weatherDataFromOpenWeatherMapWebsiteObject.pressure">
+                    <div *ngIf="card.id" class="weatherWidgetRow" style="font-size: 18px;margin-top: 10px;">
+                      {{card.date}}
+                    </div>
+                    <input *ngIf="card.id" value={{choosenTime}} onlyHour="true" class="input is-primary text-above-box" style="color: #c2c2de"
+                           type="text" (click)="openTimePicker()" />
+                    <div *ngIf="card.data.weatherDataFromOpenWeatherMapWebsiteObject.isDay" class="weatherWidgetRow">
+                      <i class="fas fa-3x fa-sun sun"></i>
+                    </div>
+                    <div *ngIf="!card.data.weatherDataFromOpenWeatherMapWebsiteObject.isDay" class="weatherWidgetRow">
+                      <i class="fas fa-3x fa-moon moon"></i>
+                    </div>
+                    <div *ngIf="card.data.weatherDataFromOpenWeatherMapWebsiteObject.isCloudy" class="weatherWidgetRow cloudDiv">
+                      <i class="fas fa-cloud fa-3x cloud"></i>
+                    </div>
+                    <div class="weatherWidgetRow" style="font-size: 36px;margin-top: 5px;">
+                      {{card.data.weatherDataFromOpenWeatherMapWebsiteObject.temperature}}°C
+                    </div>
+                    <div class="weatherWidgetRow" style="font-size: 14px;margin-top: 5px;">
+                      Prędkość wiatru: {{card.data.weatherDataFromOpenWeatherMapWebsiteObject.windSpeed}} mps
+                    </div>
+                    <div class="weatherWidgetRow" style="font-size: 14px">
+                      Wilgotność: {{card.data.weatherDataFromOpenWeatherMapWebsiteObject.humidity}}%
+                    </div>
+                  </div>
+                  <div class="weatherWidgetRow" style="font-size: 30px;margin-top: 10px;">
+                    <div *ngIf="!card.id" style="font-size: 20px"> {{card.data.weatherDataFromOpenWeatherMapWebsiteObject.city}} </div>
+                    <input #city *ngIf="card.id" class="input is-primary text-above-box" type="text" placeholder={{card.data.weatherDataFromOpenWeatherMapWebsiteObject.city}}
+                           (keyup.enter)="onCityUpdate(city.value)">
+                  </div>
+                  <div *ngIf="card.data.weatherDataFromOpenWeatherMapWebsiteObject.pressure" class="weatherWidgetRow" style="font-size: 14px;margin-top: 3px;">
+                    Ciśnienie: {{card.data.weatherDataFromOpenWeatherMapWebsiteObject.pressure}} hPa
+                  </div>
+                </div>
+              </mat-card-title>
+            </mat-card-header>
+          </mat-card>
+        </div>
+        <div *ngIf="card.title==='Card 4'">
+          <mat-card class="mat-card-chart">
+            <mat-card-header>
+              <mat-card-title>
+                <body>
+                  <div>
+                    <h1 class="title has-text-primary">Wybierz dane do wyświetlenia</h1>
+                    <mat-form-field appearance="outline" class="not_show_input_box">
+                      <mat-select [(ngModel)]="dataToDisplaySelected" (selectionChange)="changeLineChart()">
+                        <mat-option class="mat-primary" *ngFor="let dataToDisplaySelected of dataToDisplay" [value]="dataToDisplaySelected">
+                          {{dataToDisplaySelected}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <br />
+                  <canvas id="canvasId"></canvas>
+                  <br />
+                </body>
+              </mat-card-title>
+            </mat-card-header>
+          </mat-card>
+        </div>
+        <div *ngIf="card.title==='Card 5'">
+          <mat-card class="mat-card-double-column">
+            <mat-card-header>
+              <mat-card-title>
+                <body>
+                  <div>
+                    <button mat-icon-button class="addButton" (click)="onDownloadFileButtonClick()">
+                      <mat-icon aria-hidden="false" class="material-icons-outlined">file_download</mat-icon>
+                    </button>
+                  </div>
+                  <div class="table_box">
+                    <div id="pdfTable" #pdfTable>
+                      <h1 class="title has-text-primary">Historia wpisów</h1>
+                      <table mat-table [dataSource]="dataSource">
+
+                        <ng-container matColumnDef='datetime'>
+                          <th mat-header-cell *matHeaderCellDef> Data </th>
+                          <td mat-cell *matCellDef="let element"> {{element.datetime}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef='weight_start'>
+                          <th mat-header-cell *matHeaderCellDef> Masa</th>
+                          <td mat-cell *matCellDef="let element"> {{element.weight_start}} </td>
+
+                        </ng-container>
+
+                        <ng-container matColumnDef='body_temperature'>
+                          <th mat-header-cell *matHeaderCellDef> Temperatura</th>
+                          <td mat-cell *matCellDef="let element"> {{element.body_temperature}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef='sbp'>
+                          <th mat-header-cell *matHeaderCellDef> SBP </th>
+                          <td mat-cell *matCellDef="let element"> {{element.sbp}} </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef='dbp'>
+                          <th mat-header-cell *matHeaderCellDef> DBP </th>
+                          <td mat-cell *matCellDef="let element"> {{element.dbp}} </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                      </table>
+                    </div>
+                    <mat-paginator [pageSizeOptions]="[12]" showFirstLastButtons></mat-paginator>
+                  </div>
+                </body>
+              </mat-card-title>
+            </mat-card-header>
+          </mat-card>
+        </div>
+        <div *ngIf="card.title==='Card 6'">
+          <mat-card class="mat-card-avg">
+            <mat-card-header>
+              <mat-card-title>
+                <h1 class="title has-text-primary">Średnie wartości</h1>
+                <div id="meanValues">
+                  <div class="weatherWidgetRow" style="font-size: 14px">
+                    Średnia masa ciała
+                    <div class="weatherWidgetRow" style="font-size: 32px;margin-top: 5px;">
+                      {{weightAverage}} kg
+                    </div>
+                  </div>
+                </div>
+                <div id="meanValues">
+                  <div class="weatherWidgetRow" style="font-size: 14px">
+                    Średnia temperatura ciała
+                    <div class="weatherWidgetRow" style="font-size: 32px;margin-top: 0px;">
+                      {{bodyTemperatureAverage}} °C
+                    </div>
+                  </div>
+                </div>
+                <div id="meanValues">
+                  <div class="weatherWidgetRow" style="font-size: 14px">
+                    Średnie ciśnienie skurczowe
+                    <div class="weatherWidgetRow" style="font-size: 32px;margin-top: 0px">
+                      {{sbpAverage}} mmHg
+                    </div>
+                  </div>
+                </div>
+                <div id="meanValues">
+                  <div class="weatherWidgetRow" style="font-size: 14px">
+                    Średnie ciśnienie rozkurczowe
+                    <div class="weatherWidgetRow" style="font-size: 32px;margin-top: 0px">
+                      {{dbpAverage}} mmHg
+                    </div>
+                  </div>
+                </div>
+              </mat-card-title>
+            </mat-card-header>
+          </mat-card>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+
+  <footer style="background: #5c8b00">
+
+    <div class="container-fluid text-center text-md-left">
+      <div class="footer-copyright text-center py-3">
+
+        <div class="footer-header text-center py-3">
+          Uwagi i Sugestie
+        </div>
+        <div class="footer-text text-center py-3">
+          <p>
+            W przypadku jakichkolwiek uwag lub sugestii odnośnie działania systemu prosimy o kontakt mailowy  :
+            <a style="color:darkgreen" href="mailto: kontrolujcisnienie@gmail.com">Wyślij maila</a>
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </footer>
+
+</body>

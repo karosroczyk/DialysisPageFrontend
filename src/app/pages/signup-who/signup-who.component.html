@@ -1,0 +1,28 @@
+<div class="centered-content">
+    <div class="white-box">
+
+      <h1 class="title has-text-primary">Załóż konto</h1>
+
+      <div>
+          <label for="weight_start"><strong>Rejestrujesz się jako:</strong></label>
+          <mat-card class="input has-background-light booleanInput alternate-theme">
+            <mat-radio-group aria-labelledby="example-radio-group-label" [(ngModel)]="patientYesNo">
+              <mat-radio-button *ngFor="let choice of patientChoice" [value]="choice">
+                {{choice}}
+              </mat-radio-button>
+            </mat-radio-group>
+          </mat-card>
+      </div>
+
+      <div class="field">
+        <button class="button is-success has-text-white button-box" (click)="onSignupButtonClicked()">
+          Dalej
+        </button>
+      </div>
+
+      <p class="has-text-grey">Masz już konto? <a routerLink="/login">Zaloguj się</a> teraz!</p>
+      <br>
+
+    </div>
+  </div>
+

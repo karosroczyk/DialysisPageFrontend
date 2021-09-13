@@ -1,0 +1,135 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+::placeholder {
+  font-size: 14px;
+}
+
+::ng-deep .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+  background-color: lightgreen !important;
+}
+
+::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle {
+  background-color: green !important; /*inner circle color change*/
+}
+
+::ng-deep.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: green !important; /*outer ring color change*/
+}
+
+::ng-deep .mat-form-field.mat-focused .mat-form-field-ripple {
+  color: green !important;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: green !important;
+  font-family: "Tahoma";
+  font-weight: 500;
+  margin-left: -10px;
+  margin-right: -250px;
+  line-height: 25px;
+  float: left;
+  width: 105%;
+}
+
+::ng-deep .mat-select-trigger {
+  width: 100%;
+  float: right;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+
+mat-datepicker-toggle {
+  color: green !important;
+}
+
+.back-box {
+  background: #fafafa;
+  margin-top: 5%;
+  height: 100%;
+}
+
+.front-box {
+  padding: 5%;
+  background: white;
+  border-radius: 5px;
+  width: 750px;
+  height: 95%;
+  max-width: 750px;
+}
+
+.text-above-box {
+  border-radius: 5px;
+  height: 60%;
+  font-size: 14px;
+}
+
+.booleanInput {
+  float: left;
+  width: 100%;
+  height: 60%;
+  color: #C2C2C2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-color: transparent;
+  box-shadow: none;
+  font-size: 14px;
+}
+
+.calendarIcon {
+  float: left;
+  width: 10%;
+  font-family: "Tahoma";
+  font-weight: 500;
+  height: 60%;
+}
+
+.calendarInput {
+  float: right;
+  width: 90%;
+  font-family: "Tahoma";
+  font-weight: 500;
+  font-size: 14px;
+  height: 60%;
+}
+
+.not_show_input_box {
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.mat-radio-button {
+  font-family: "Tahoma";
+  font-weight: 500;
+}
+
+.button-box {
+  float: center;
+  width: 100%;
+  padding: 5%;
+  border-radius: 5px;
+  margin-top: 10%;
+  font-size: 14px;
+}
+
+.footer-header {
+  font-family: 'Lato';
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: white;
+}
+
+.footer-text {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: white;
+}
+
+footer {
+  margin-top: 5%;
+}

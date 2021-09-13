@@ -1,0 +1,95 @@
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="centered-content back-box">
+    <div class="front-box">
+
+      <h1 class="title has-text-primary" style="height:10%">Ustawienia</h1>
+
+      <div style="height:10%">
+        <label for="weight_start">Email</label>
+        <input #emailInput class="input is-primary text-above-box" type="text" placeholder={{this.userSignUpForm.email}}>
+      </div>
+
+      <div style="height:10%">
+        <label for="weight_start">Hasło</label>
+        <input #pwInput class="input is-primary text-above-box" type="text" placeholder={{this.userSignUpForm.password}}>
+      </div>
+
+      <div style="height:10%">
+        <label for="weight_start">Płeć</label>
+        <mat-card class="input has-background-light booleanInput alternate-theme">
+          <mat-radio-group aria-labelledby="example-radio-group-label" [(ngModel)]="this.genderWomanMan">
+            <mat-radio-button *ngFor="let choice of genderChoice" [value]="choice">
+              {{choice}}
+            </mat-radio-button>
+          </mat-radio-group>
+        </mat-card>
+      </div>
+
+      <div style="height:10%">
+          <label for="weight_start">Data urodzenia</label>
+          <input #birthdayInput class="input has-background-light calendarInput text-above-box" matInput [matDatepicker]="picker" placeholder={{this.userSignUpFormBirthdayTransformed}}>
+          <mat-datepicker-toggle class="has-background-light calendarIcon" [for]="picker">
+          </mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+      </div>
+
+      <div style="height:10%">
+          <label for="weight_start">Data pierwszej dializy</label>
+          <input #firstDialysisInput class="input is-primary has-background-light calendarInput text-above-box" matInput [matDatepicker]="pickerdialysis" placeholder={{this.userSignUpFormFirstDialysisTransformed}}>
+          <mat-datepicker-toggle class="has-background-light calendarIcon" [for]="pickerdialysis">
+          </mat-datepicker-toggle>
+          <mat-datepicker #pickerdialysis></mat-datepicker>
+      </div>
+
+      <div style="height:10%">
+          <label for="weight_start">Czy cierpisz na cukrzyce ?</label>
+          <mat-card class="input has-background-light booleanInput alternate-theme">
+            <mat-radio-group aria-labelledby="example-radio-group-label" [(ngModel)]="this.diabetesYesNo">
+              <mat-radio-button *ngFor="let choice of diabetesChoice" [value]="choice">
+                {{choice}}
+              </mat-radio-button>
+            </mat-radio-group>
+          </mat-card>
+      </div>
+
+      <div style="height:10%">
+        <div>
+          <label for="weight_start" class="small-titles">Lekarz</label>
+          <mat-form-field appearance="outline" class="input not_show_input_box text-above-box">
+            <mat-select [(ngModel)]="selectedDoctor" placeholder={{this.userSignUpForm.lekarz}}>
+              <mat-option *ngFor="let doctor of doctorsList" [value]="doctor.email">
+                {{doctor.email}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div style="height:10%">
+        <div class="field">
+          <button class="button is-success has-text-white button-box small-titles" (click)="onUpdateButtonClicked(
+                emailInput.value, pwInput.value, birthdayInput.value, firstDialysisInput.value)">
+            Zapisz zmiany
+          </button>
+        </div>
+      </div>
+      </div>
+    </div>
+
+  <footer style="background: #5c8b00">
+    <div class="footer-header text-center py-3">
+      Uwagi i Sugestie
+    </div>
+    <div class="footer-text text-center py-3">
+      <p>
+        W przypadku jakichkolwiek uwag lub sugestii odnośnie działania systemu prosimy o kontakt mailowy  :
+        <a style="color:darkgreen" href="mailto: kontrolujcisnienie@gmail.com">Wyślij maila</a>
+      </p>
+    </div>
+  </footer>
+</body>

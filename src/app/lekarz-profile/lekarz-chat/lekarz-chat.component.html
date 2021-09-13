@@ -1,0 +1,66 @@
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="centered-content back-box">
+    <div class="front-box">
+
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+      <h1 class="title has-text-primary">Kontakt do pacjenta</h1>
+
+      <div class="card">
+        <div class="users-container">
+          <div class="selected-user">
+            <span class="name">
+              <strong>Lista pacjentów:</strong>
+            </span>
+          </div>
+
+          <div style="height: 90%;">
+            <mat-selection-list [multiple]="false" [(ngModel)]="selectedOptions" (ngModelChange)="onNgModelChange()">
+              <mat-list-option *ngFor="let user of this.lekarzDataFromSignUpForm.patientsList" [value]="user">
+                {{user}}
+              </mat-list-option>
+            </mat-selection-list>
+          </div>
+        </div>
+
+        <div class="chat-container">
+          <div class="selected-user">
+            <span>Czat z:  <span class="name"><strong>{{this.selectedOptions}}</strong></span></span>
+          </div>
+
+          <ul class="chat-messages-show-container" id="scroll-bottom">
+            <ul id="message-list"></ul>
+            <input class="input is-primary text-above-box" type="text" [(ngModel)]="message" placeholder="Napisz wiadomość...">
+            <button class="button is-success has-text-white button-box chat-messages-create-button" (click)="SendMessage()"> Wyślij </button>
+          </ul>
+        </div>
+      </div>
+
+      <div style="margin-top: 5%;">
+        <h1 class="title has-text-primary">Pobierz wyniki badań</h1>
+      </div>
+
+        <div>
+          <button type="button" class="button is-success has-text-white chat-messages-create-button" (click)="downloadFile()">Pobierz</button>
+        </div>
+
+      </div>
+    </div>
+
+  <footer style="background: #5c8b00">
+    <div class="footer-header text-center py-3">
+      Uwagi i Sugestie
+    </div>
+    <div class="footer-text text-center py-3">
+      <p>
+        W przypadku jakichkolwiek uwag lub sugestii odnośnie działania systemu prosimy o kontakt mailowy  :
+        <a style="color:darkgreen" href="mailto: kontrolujcisnienie@gmail.com">Wyślij maila</a>
+      </p>
+    </div>
+  </footer>
+</body>

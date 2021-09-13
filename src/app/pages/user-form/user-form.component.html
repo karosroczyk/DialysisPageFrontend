@@ -1,0 +1,70 @@
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="centered-content back-box">
+    <div class="front-box">
+
+      <h1 class="title has-text-primary">Stan zdrowia</h1>
+
+      <div class="alert-box">
+        <div class="alert alert-success">
+          <strong>Wiadomości: </strong>
+          <br>{{message_sbp}}
+          <br>{{message_dbp}}
+        </div>
+      </div>
+
+      <div style="height:28%">
+        <label for="weight_start">Masa ciała [kg]</label>
+        <input #weight_start class="input is-primary text-above-box" type="text" placeholder="Masa ciała" id="weight_start" (keyup)="onKey('weight_start', weight_start.value)">
+
+        <label for="body_temperature">Temperatura ciała [°C]</label>
+        <input #body_temperature class="input is-primary text-above-box" type="text" placeholder="Temperatura ciała" id="body_temperature" (keyup)="onKey('body_temperature', body_temperature.value)">
+
+        <label for="sbp">Skurczowe ciśnienie krwi [mmHg]</label>
+        <input #sbp class="input is-primary text-above-box" type="text" placeholder="Skurczowe ciśnienie krwi" id="sbp" (keyup)="onKey('sbp', sbp.value)">
+
+        <label for="dbp">Rozkurczowe ciśnienie krwi [mmHg]</label>
+        <input #dbp class="input is-primary text-above-box" type="text" placeholder="Rozkurczowe ciśnienie krwi" id="dbp" (keyup)="onKey('dbp', dbp.value)">
+      </div>
+
+        <h1 class="title has-text-primary">Parametry sesji</h1>
+
+        <div style="height:35%">
+          <label for="dia_temp_value">Temperatura początkowa dializatu [°C]</label>
+          <input #dia_temp_value class="input is-primary text-above-box2" type="text" placeholder="36.5 °C" id="dia_temp_value" (keyup)="onKey('dia_temp_value', dia_temp_value.value)">
+
+          <label for="conductivity">Stężenie sodu w dializacie [mmol/L]</label>
+          <input #conductivity class="input is-primary text-above-box2" type="text" placeholder="14 mmol/L" id="conductivity" (keyup)="onKey('conductivity', conductivity.value)">
+
+          <label for="uf">Wskaźnik ultrafiltracji</label>
+          <input #uf class="input is-primary text-above-box2" type="text" placeholder=0.5 id="uf" (keyup)="onKey('uf', uf.value)">
+
+          <label for="blood_flow">Wskaźnik przepływu krwi przez dializer oraz powiązane urządzenia [ml/min]</label>
+          <input #blood_flow class="input is-primary text-above-box2" type="text" placeholder="236 ml/min" id="blood_flow" (keyup)="onKey('blood_flow', blood_flow.value)">
+
+          <label for="dialysis_time">Czas trwania sesji [min]</label>
+          <input #dialysis_time class="input is-primary text-above-box2" type="text" placeholder="130 min" id="dialysis_time" (keyup)="onKey('dialysis_time', dialysis_time.value)">
+        </div>
+        <div style="height:4%">
+          <button class="button is-success has-text-white button-box" (click)="onSubmitButton()">Dodaj wpis</button>
+        </div>
+      </div>
+    </div>
+
+  <footer style="background: #5c8b00">
+    <div class="footer-header text-center py-3">
+      Uwagi i Sugestie
+    </div>
+    <div class="footer-text text-center py-3">
+      <p>
+        W przypadku jakichkolwiek uwag lub sugestii odnośnie działania systemu prosimy o kontakt mailowy  :
+        <a style="color:darkgreen" href="mailto: kontrolujcisnienie@gmail.com">Wyślij maila</a>
+      </p>
+    </div>
+  </footer>
+</body>
+

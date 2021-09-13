@@ -1,0 +1,161 @@
+
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="back-box">
+    <mat-grid-list cols="4" rowHeight="50%">
+      <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+        <div *ngIf="card.title==='Card 3' || card.title==='Card 4'">
+          <mat-card class="dashboard-card-weather">
+            <mat-card-header>
+              <mat-card-title>
+                <h1 class="title has-text-primary">Pogoda na jutro</h1>
+                <p></p>
+
+                <div id="divWeatherMain">
+                  <div *ngIf="!card.id" class="weatherWidgetRow" style="font-size: 18px;margin-top: 10px;">
+                    {{card.date }} {{selectedTime}}
+                  </div>
+                  <div *ngIf="card.id" class="weatherWidgetRow" style="font-size: 18px;margin-top: 10px;">
+                    {{card.date }}
+                  </div>
+                  <input *ngIf="card.id" #hour class="input is-primary text-above-box" value={{choosenTime}} onlyHour="true" style="color: #c2c2de"
+                         type="text" (click)="openTimePicker()" />
+                  <div *ngIf="card.data.weatherDataFromOpenWeatherMapWebsiteObject.isDay" class="weatherWidgetRow">
+                    <i class="fas fa-3x fa-sun sun"></i>
+                  </div>
+                  <div *ngIf="!card.data.weatherDataFromOpenWeatherMapWebsiteObject.isDay" class="weatherWidgetRow">
+                    <i class="fas fa-3x fa-moon moon"></i>
+                  </div>
+                  <div *ngIf="card.data.weatherDataFromOpenWeatherMapWebsiteObject.isCloudy" class="weatherWidgetRow cloudDiv">
+                    <i class="fas fa-cloud fa-3x cloud"></i>
+                  </div>
+                  <div class="weatherWidgetRow" style="font-size: 36px;margin-top: 5px;">
+                    {{card.data.weatherDataFromOpenWeatherMapWebsiteObject.temperature}}°C
+                  </div>
+                  <div class="weatherWidgetRow" style="font-size: 14px;margin-top: 5px;">
+                    Prędkość wiatru: {{card.data.weatherDataFromOpenWeatherMapWebsiteObject.windSpeed}} mps
+                  </div>
+                  <div class="weatherWidgetRow" style="font-size: 14px">
+                    Wilgotność: {{card.data.weatherDataFromOpenWeatherMapWebsiteObject.humidity}}%
+                  </div>
+                  <div class="weatherWidgetRow" style="font-size: 30px;margin-top: 10px;">
+                    <div *ngIf="!card.id" style="font-size: 20px"> {{card.data.weatherDataFromOpenWeatherMapWebsiteObject.city}} </div>
+                    <input #city *ngIf="card.id" class="input is-primary text-above-box" type="text" placeholder={{card.data.weatherDataFromOpenWeatherMapWebsiteObject.city}}
+                           (keyup.enter)="onCityUpdate(city.value)">
+                  </div>
+                  <div class="weatherWidgetRow" style="font-size: 14px;margin-top: 3px;">
+                    Ciśnienie: {{card.data.weatherDataFromOpenWeatherMapWebsiteObject.pressure}} hPa
+                  </div>
+                </div>
+              </mat-card-title>
+            </mat-card-header>
+          </mat-card>
+        </div>
+        <div *ngIf="card.title==='Card 5'">
+          <mat-card style="margin-top: 10px">
+            <mat-card-header>
+              <mat-card-title>
+
+              </mat-card-title>
+            </mat-card-header>
+          </mat-card>
+        </div>
+        <div *ngIf="card.title==='Card 1'">
+          <mat-card class="mat-card-avg">
+            <mat-card-header>
+              <mat-card-title>
+                <body>
+                  <div class="field">
+                    <h1 class="title has-text-primary">Podstawowe informacje</h1>
+                    <mat-form-field appearance="outline" class="not_show_input_box">
+                      <mat-select placeholder="Wybierz pacjenta..." name="patientInfo" (selectionChange)="patientDataDisplay(patientInfo)" [(ngModel)]="patientInfo">
+                        <mat-option *ngFor="let education of patientsList" [value]="education">
+                          {{ education }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div id="meanValues">
+                    <div class="weatherWidgetRow" style="font-size: 14px">
+                      Płeć
+                      <div class="weatherWidgetRow" style="font-size: 32px;margin-top: 0px">
+                        {{gender}}
+                      </div>
+                    </div>
+                  </div>
+                  <div id="meanValues">
+                    <div class="weatherWidgetRow" style="font-size: 14px">
+                      Cukrzyca
+                      <div class="weatherWidgetRow" style="font-size: 32px;margin-top: 0px">
+                        {{diabetes}}
+                      </div>
+                    </div>
+                  </div>
+                  <div id="meanValues">
+                    <div class="weatherWidgetRow" style="font-size: 14px">
+                      Data urodzin
+                      <div class="weatherWidgetRow" style="font-size: 32px;margin-top: 5px;">
+                        {{birthday}}
+                      </div>
+                    </div>
+                  </div>
+                  <div id="meanValues">
+                    <div class="weatherWidgetRow" style="font-size: 14px">
+                      Data pierwszej dializy
+                      <div style="font-size: 32px;margin-top: 5px;">
+                        {{firstDialysis}}
+                      </div>
+                    </div>
+                  </div>
+                </body>
+              </mat-card-title>
+            </mat-card-header>
+          </mat-card>
+        </div>
+        <div *ngIf="card.title==='Card 6'">
+          <mat-card class="mat-card-double-column">
+            <mat-card-header>
+              <mat-card-title>
+
+              </mat-card-title>
+            </mat-card-header>
+          </mat-card>
+        </div>
+        <div *ngIf="card.title==='Card 7'">
+          <mat-card class="mat-card-avg">
+            <mat-card-header>
+              <mat-card-title>
+
+
+              </mat-card-title>
+            </mat-card-header>
+          </mat-card>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+
+  <footer style="background: #5c8b00">
+
+    <div class="container-fluid text-center text-md-left">
+      <div class="footer-copyright text-center py-3">
+
+        <div class="footer-header text-center py-3">
+          Uwagi i Sugestie
+        </div>
+        <div class="footer-text text-center py-3">
+          <p>
+            W przypadku jakichkolwiek uwag lub sugestii odnośnie działania systemu prosimy o kontakt mailowy  :
+            <a style="color:darkgreen" href="mailto: kontrolujcisnienie@gmail.com">Wyślij maila</a>
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </footer>
+</body>

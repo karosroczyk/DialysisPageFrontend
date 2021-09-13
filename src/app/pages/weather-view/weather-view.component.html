@@ -1,0 +1,29 @@
+<div id="divWeatherMain">
+  <div class="weatherWidgetRow" style="font-size: 12px;margin-top: 10px;">
+    {{date}}
+  </div>
+  <div *ngIf="weatherDataFromOpenWeatherMapWebsiteObject.isDay" class="weatherWidgetRow">
+    <i class="fas fa-3x fa-sun sun"></i>
+  </div>
+  <div *ngIf="!weatherDataFromOpenWeatherMapWebsiteObject.isDay" class="weatherWidgetRow">
+    <i class="fas fa-3x fa-moon moon"></i>
+  </div>
+  <div class="weatherWidgetRow cloudDiv">
+    <i class="fas fa-cloud fa-3x cloud"></i>
+  </div>
+  <div class="weatherWidgetRow" style="font-size: 32px;margin-top: 10px;">
+    {{weatherDataFromOpenWeatherMapWebsiteObject.temperature}}°C
+  </div>
+  <div class="weatherWidgetRow" style="font-size: 12px;margin-top: 5px;">
+    Prędkość wiatru: {{weatherDataFromOpenWeatherMapWebsiteObject.windSpeed}} mps
+  </div>
+  <div class="weatherWidgetRow" style="font-size: 12px">
+    Wilgotność: {{weatherDataFromOpenWeatherMapWebsiteObject.humidity}}%
+  </div>
+  <div class="weatherWidgetRow" style="font-size: 25px;margin-top: 10px;">
+    {{city_name}}
+  </div>
+  <div class="weatherWidgetRow" style="font-size: 12px;margin-top: 3px;">
+    Ciśnienie: {{weatherDataFromOpenWeatherMapWebsiteObject.pressure}} hPa
+  </div>
+</div>

@@ -1,0 +1,4 @@
+<app-nav *ngIf="visiblePacjentPage"></app-nav>
+<app-nav-lekarz *ngIf ="visibleLekarzPage"></app-nav-lekarz>
+<router-outlet *ngIf="!visiblePacjentPage && !visibleLekarzPage"></router-outlet>
+

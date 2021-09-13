@@ -1,0 +1,101 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+::ng-deep .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+  background-color: lightgreen !important;
+}
+
+::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle {
+  background-color: green !important; /*inner circle color change*/
+}
+
+::ng-deep.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: green !important; /*outer ring color change*/
+}
+
+::ng-deep .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+  color: green !important;
+}
+
+::ng-deep .mat-option-pseudo-checkbox.mat-pseudo-checkbox-checked {
+  background-color: green !important;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: green !important;
+  font-family: "Tahoma";
+  font-weight: 500;
+  margin-left: -10px;
+  margin-right: -250px;
+  line-height: 25px;
+  float: left;
+  width: 105%;
+}
+
+.not_show_input_box {
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.mat-radio-button {
+  font-family: "Tahoma";
+  font-weight: 500;
+}
+
+.white-box {
+  padding: 3%;
+  background: white;
+  border-radius: 5px;
+  width: 550px;
+  height: 95%;
+  max-width: 750px;
+}
+
+.calendarIcon {
+  float: left;
+  width: 10%;
+  font-family: "Tahoma";
+  font-weight: 500;
+  height: 80%;
+}
+
+.calendarInput {
+  float: right;
+  width: 90%;
+  font-family: "Tahoma";
+  font-weight: 500;
+  font-size: 16px;
+  height: 80%;
+}
+
+.booleanInput {
+  float: left;
+  width: 100%;
+  height: 80%;
+  color: #C2C2C2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-color: transparent;
+  box-shadow: none;
+  font-size: 16px;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+
+.button-box {
+  float: center;
+  width: 100%;
+  padding: 5%;
+  border-radius: 5px;
+  margin-top: 5%;
+  font-size: 16px;
+  height: 80%;
+}
+
+mat-datepicker-toggle {
+  color: green !important;
+}

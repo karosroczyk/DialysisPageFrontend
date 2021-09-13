@@ -1,0 +1,46 @@
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="centered-content back-box">
+    <div class="front-box">
+
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
+      <h1 class="title has-text-primary">Kontakt do lekarza</h1>
+      <div class="chat-container">
+          <ul class="chat-messages-show-container" id="scroll-bottom">
+            <ul id="message-list"></ul>
+            <input class="input is-primary text-above-box" type="text" [(ngModel)]="message" placeholder="Napisz wiadomość...">
+            <button class="button is-success has-text-white button-box chat-messages-create-button" (click)="SendMessage()"> Wyślij </button>
+          </ul>
+      </div>
+
+      <h1 class="title has-text-primary">Udostępnij wyniki badań</h1>
+      <div class="chat-container2" id="fileSelector">
+        <div>
+          <input class="input has-background-light booleanInput custom-file-input" type="file" data-classButton="btn btn-primary" data-input="false" name="fileUplaod" id="fileUpload"
+                 ng2FileSelect [uploader]="uploader">
+          </div>
+            <div class="uploadList" *ngFor="let item of uploader.queue">
+              <button type="button" class="button is-success has-text-white upload-button" (click)="item.upload()">Udostępnij</button>
+              <button type="button" class="button is-success has-text-white upload-button" (click)="item.remove()">Anuluj</button>
+            </div>
+          </div>
+        </div>
+  </div>
+
+  <footer style="background: #5c8b00">
+    <div class="footer-header text-center py-3">
+      Uwagi i Sugestie
+    </div>
+    <div class="footer-text text-center py-3">
+      <p>
+        W przypadku jakichkolwiek uwag lub sugestii odnośnie działania systemu prosimy o kontakt mailowy  :
+        <a style="color:darkgreen" href="mailto: kontrolujcisnienie@gmail.com">Wyślij maila</a>
+      </p>
+    </div>
+  </footer>
+</body>

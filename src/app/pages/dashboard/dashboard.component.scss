@@ -1,0 +1,237 @@
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: green !important;
+  font-family: "Tahoma";
+  font-weight: 500;
+  margin-left: -10px;
+  margin-right: -250px;
+  line-height: 25px;
+  float: left;
+  width: 100%;
+}
+
+::ng-deep .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+  color: green !important;
+}
+
+::ng-deep .mat-form-field-flex > .mat-form-field-infix {
+  padding: 0.4em 0px !important; //tu zmieniamy rozmiar select inputa
+}
+
+.back-box {
+  background: #fafafa;
+}
+
+.mat-card {
+  height: 400px;
+}
+
+.title {
+  font-family: 'Lato';
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.text-above-box {
+  margin-top: 5%;
+  margin-bottom: 0%;
+  border-radius: 5%;
+  height: 35px;
+  font-size: 14px;
+}
+
+.dashboard-card-weather {
+  top: 0px;
+  left: 15px;
+  right: 15px;
+  bottom: 0px;
+  position: relative;
+  margin-top: 10px
+}
+
+#divWeatherMain {
+  display: block;
+  border-radius: 5%;
+  width: 200px;
+  height: 320px;
+  margin: 0 auto;
+  padding: 5%;
+  position: relative;
+  background: linear-gradient(180deg, #91c4fc 0%, #d0c3fb 100%);
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  float: left;
+  border: 3px solid white;
+}
+
+.weatherWidgetRow {
+  display: block;
+  margin: 0 auto;
+  width: fit-content;
+  font-size: 11px;
+}
+
+.sun {
+  margin-top: 10px;
+  color: yellow;
+  filter: drop-shadow( 1px 1px 10px yellow);
+}
+
+.moon {
+  margin-top: 10px;
+  color: white;
+  filter: drop-shadow( 1px 1px 10px white);
+}
+
+.cloudDiv {
+  margin-top: -40px;
+}
+
+.cloud {
+  color: rgb(104, 175, 197);
+  filter: drop-shadow( 1px 1px 5px rgb(104, 175, 197));
+  animation-name: cloudMovement;
+  animation-iteration-count: infinite;
+  animation-duration: 10s;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+}
+
+@keyframes cloudMovement {
+  from {
+    margin-left: -55px;
+  }
+
+  to {
+    margin-left: 65px;
+  }
+}
+
+#divPointers {
+  display: block;
+  border-radius: 10%;
+  width: 150px;
+  height: 100px;
+  margin: 0 auto;
+  padding: 2%;
+  position: relative;
+  background: #579EBA;
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  float: left;
+  border: 3px solid white;
+  margin-top: 5%;
+}
+
+.not_show_input_box {
+  border-color: transparent;
+  box-shadow: none;
+  width: 100%;
+  height: 5px
+}
+
+.mat-card-double-column {
+  height: 770px;
+}
+
+.table_box {
+  margin-bottom: 50px;
+  margin-bottom: 50px;
+}
+
+pdfTable {
+  color: red;
+  width: 500px;
+  height: 800px;
+}
+
+#meanValues {
+  border-radius: 5%;
+  width: 290px;
+  height: 100px;
+  margin: 0 auto;
+  padding: 2%;
+  position: relative;
+  background: #42586A;
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  float: left;
+  border: 3px solid white;
+  margin-top: 5%;
+}
+
+.footer-header {
+  font-family: 'Lato';
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: white;
+}
+
+.footer-text {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: white;
+}
+
+footer {
+  margin-top: 5%;
+}
+
+.gauge {
+  position: relative;
+  float: left;
+  border-radius: 5%;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-header-cell {
+  text-align: center;
+  background: #95b575;
+  margin-bottom: 0%;
+  font-size: 16px;
+  color: white;
+  position: relative;
+  flex-direction: column;
+}
+
+.mat-cell {
+  text-align: center;
+}
+
+.mat-card-chart {
+  position: relative;
+  margin-top: 4%;
+  width: 650px;
+}
+
+.mat-card-avg {
+  position: relative;
+  height: 340px;
+  margin-top: 4%;
+  width: 650px;
+}
+
+body {
+  min-width: 600px;
+  width: auto !important;
+  width: 600px;
+}
+
+canvas {
+  width: 500px !important;
+  height: 250px !important;
+}
+
+.addButton {
+  display: block;
+  margin: 0 auto;
+  position: absolute;
+  color: white;
+  right: 4%;
+  background: #95b575;
+}

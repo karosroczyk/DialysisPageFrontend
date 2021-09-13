@@ -1,0 +1,94 @@
+<div class="centered-content">
+  <div class="white-box">
+
+    <h1 class="title has-text-primary">Załóż konto</h1>
+
+    <div class="control has-icons-left has-icons-right" style="height: 8%">
+        <input #emailInput class="input has-background-light mat-radio-button" placeholder="Email">
+        <span class="icon is-small is-left">
+          <i class="fas fa-envelope"></i>
+        </span>
+    </div>
+
+    <div class="control has-icons-left" style="height: 8%" >
+        <input #pwInput class="input has-background-light mat-radio-button" type="password" placeholder="Hasło">
+        <span class="icon is-small is-left">
+          <i class="fas fa-lock"></i>
+        </span>
+    </div>
+
+    <div style="height: 8%">
+      <mat-card class="input has-background-light booleanInput alternate-theme">
+        <mat-radio-group aria-labelledby="example-radio-group-label" [(ngModel)]="genderWomanMan">
+          <mat-radio-button *ngFor="let choice of genderChoice" [value]="choice">
+            {{choice}}
+          </mat-radio-button>
+        </mat-radio-group>
+      </mat-card>
+    </div>
+
+    <div style="height: 8%">
+      <input #birthdayInput class="input has-background-light calendarInput" type="email" matInput [matDatepicker]="picker" placeholder="Data urodzenia">
+      <mat-datepicker-toggle class="has-background-light calendarIcon" [for]="picker">
+      </mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </div>
+
+    <div style="height: 8%" *ngIf="isPatient">
+      <input [(ngModel)]="firstDialysisInput" class="input has-background-light calendarInput" type="email" matInput [matDatepicker]="pickerdialysis" placeholder="Data pierwszej dializy">
+      <mat-datepicker-toggle class="has-background-light calendarIcon" [for]="pickerdialysis">
+      </mat-datepicker-toggle>
+      <mat-datepicker #pickerdialysis></mat-datepicker>
+    </div>
+
+    <div style="height: 16%" *ngIf="isPatient">
+      <mat-card class="input has-background-light booleanInput alternate-theme">
+        <p class="mat-radio-button">Czy cierpisz na cukrzycę?</p>
+        <mat-radio-group aria-labelledby="example-radio-group-label" [(ngModel)]="dialysisYesNo">
+          <mat-radio-button *ngFor="let choice of dialysisChoice" [value]="choice">
+            {{choice}}
+          </mat-radio-button>
+        </mat-radio-group>
+      </mat-card>
+    </div>
+
+    <div style="height:8%" *ngIf="isPatient">
+      <mat-form-field appearance="outline" class="input not_show_input_box">
+        <mat-select [(ngModel)]="selectedDoctor" placeholder="Lekarz">
+          <mat-option *ngFor="let doctor of usersList" [value]="doctor.email">
+            {{doctor.email}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div style="height:8%" *ngIf="!isPatient">
+      <mat-form-field appearance="outline" class="input not_show_input_box">
+        <mat-select [(ngModel)]="selectedPatients" placeholder="Pacjent" multiple>
+          <mat-option class="mat-primary" *ngFor="let user of usersList" [value]="user.email">
+            {{user.email}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div style="height:8%" *ngIf="isPatient">
+      <button class="button is-success has-text-white button-box" (click)="onSignupButtonClickedForPatient(
+                emailInput.value, pwInput.value, birthdayInput.value)">
+        Załóż konto
+      </button>
+    </div>
+
+    <div style="height:8%" *ngIf="!isPatient">
+      <button class="button is-success has-text-white button-box" (click)="onSignupButtonClickedForDoctor(
+                emailInput.value, pwInput.value, birthdayInput.value)">
+        Załóż konto
+      </button>
+    </div>
+
+    <div style="height: 8%">
+      <p class="has-text-grey centered-content">Masz już konto? <a routerLink="/login">Zaloguj się</a> teraz!</p>
+    </div>
+
+  </div>
+</div>
